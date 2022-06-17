@@ -3,6 +3,9 @@ import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db, auth } from "../firebaseConfig";
 import DeleteArticle from "./DeleteArticle";
 import { useAuthState } from "react-firebase-hooks/auth";
+import LikeArticle from "./LikeArticle";
+import { Link } from "react-router-dom";
+
 export default function Articles() {
   const [articles, setArticles] = useState([]);
   const [user] = useAuthState(auth);
@@ -26,17 +29,21 @@ export default function Articles() {
           <div key={article.id} className="border mt-3 p-3 bg-light">
             <div className="row">
               <div className="col-3">
-                <img
-                  src={article.imageUrl}
-                  alt="title"
-                  style={{ height: 180, width: 180 }}
-                />
+                <Link to={`/articles/${article.id}`}>
+                  <img
+                    src={article.imageUrl}
+                    alt="title"
+                    style={{ height: 180, width: 180 }}
+                  />
+                </Link>
               </div>
               <div className="col-9 ps-3">
                 <div className="row">
                   <div className="col-6">
-                    {createdBy && (
-                      <span className="badge bg-primary">{createdBy}</span>
+                    {article.createdBy && (
+                      <span className="badge bg-primary">
+                        {article.createdBy}
+                      </span>
                     )}
                   </div>
                   <div className="col-6 d-flex flex-row-reverse">
@@ -51,6 +58,12 @@ export default function Articles() {
                 <h2>{article.title}</h2>
                 <p> {article.createdAt?.toDate().toDateString()}</p>
                 <p>{article.description}</p>
+
+                <div className="d-flex flex-row-reverse">
+                  {user && (
+                    <LikeArticle id={article.id} likes={article.likes} />
+                  )}
+                </div>
               </div>
             </div>
           </div>

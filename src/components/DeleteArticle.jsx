@@ -6,21 +6,25 @@ import { deleteObject, ref } from "firebase/storage";
 
 export default function DeleteArticle({ id, imageUrl }) {
   const handleDelete = async () => {
-    try {
-      await deleteDoc(doc(db, "Articles", id));
-      toast("Article deleted successfully", { type: "success" });
-      const storageRef = ref(storage, imageUrl);
-      await deleteObject(storageRef);
-    } catch (err) {
-      toast("Error deleting article", { type: "error" });
+    if (window.confirm("Are you sure wat to delete this artice ?")) {
+      try {
+        await deleteDoc(doc(db, "Articles", id));
+        toast("Article deleted successfully", { type: "success" });
+        const storageRef = ref(storage, imageUrl);
+        await deleteObject(storageRef);
+      } catch (err) {
+        toast("Error deleting article", { type: "error" });
+      }
     }
   };
   const handleCancel = () => {};
   return (
     <div>
-      <button className="btn btn-danger" onClick={handleDelete}>
-        Delete or not
-      </button>
+      <i
+        className="fa fa-times"
+        style={{ cursor: "pointer" }}
+        onClick={handleDelete}
+      ></i>
     </div>
   );
 }

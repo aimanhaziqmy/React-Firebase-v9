@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/article/:id" element={<Articles />} />
           <Route
             path="/"
             element={
