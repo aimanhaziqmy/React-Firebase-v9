@@ -29,7 +29,7 @@ export default function Articles() {
           <div key={article.id} className="border mt-3 p-3 bg-light">
             <div className="row">
               <div className="col-3">
-                <Link to={`/articles/${article.id}`}>
+                <Link to={`/article/${article.id}`}>
                   <img
                     src={article.imageUrl}
                     alt="title"

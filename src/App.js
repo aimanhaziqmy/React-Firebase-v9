@@ -1,5 +1,6 @@
 import AddArticle from "./components/AddArticle";
 import Articles from "./components/Articles";
+import Article from "./components/Article";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Register from "./components/auth/Register";
@@ -11,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/article/:id" element={<Articles />} />
+          <Route path="/article/:id" element={<Article />} />
           <Route
             path="/"
             element={
