@@ -63,6 +63,14 @@ export default function Articles() {
                   {user && (
                     <LikeArticle id={article.id} likes={article.likes} />
                   )}
+                  <div className="pe-2">
+                    <p>{article.likes?.length} likes</p>
+                  </div>
+                  {article.comments && article.comments.length > 0 && (
+                    <div className="pe-2">
+                      <p>{article.comments.length} comments</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
