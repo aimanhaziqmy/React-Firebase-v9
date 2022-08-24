@@ -15,9 +15,9 @@ export default function Comment({ id }) {
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const [currentlyLoggedinUser] = useAuthState(auth);
-  const commentRef = doc(db, "Articles", id);
+  const commentRef = doc(db, "Events", id);
   useEffect(() => {
-    const docRef = doc(db, "Articles", id);
+    const docRef = doc(db, "Events", id);
     onSnapshot(docRef, (snapshot) => {
       setComments(snapshot.data().comments);
     });

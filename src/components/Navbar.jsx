@@ -11,30 +11,28 @@ const Navbar = () => {
       className="fixed-top"
     >
       <nav className="navbar navbar-light bg-light">
-      <div className="row container-fluid">
-        <div className="col-auto">
-          <img
-            src={ImanMediaImg}
-            height={50}
-            alt="logo"
-            className="ms-2"
-          />
-      </div>
-      <div className="col-auto">
-          <Link className="nav-link" to="/">
-          Home
-        </Link>
-        </div>
-        <div className="col-auto">
-         
-          <Link className="nav-link" to="/register">
-          Register
-        </Link>
-        </div>
-        </div>
-        
-       
-        {user && (
+        <div className="row container-fluid">
+          <div className="col-auto">
+            <img
+              src={ImanMediaImg}
+              height={50}
+              alt="logo"
+              className="ms-2"
+            />
+          </div>
+          <div className="col-auto">
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+          </div>
+          <div className="col-auto">
+
+            <Link className="nav-link" to="/register">
+              Register
+            </Link>
+          </div>
+          <div className="col-auto">
+          {user && (
           <>
             <span className="pe-4">Signed in as {user.displayName}</span>
             <button
@@ -47,6 +45,8 @@ const Navbar = () => {
             </button>
           </>
         )}
+            </div>
+        </div>
       </nav>
     </div>
   );

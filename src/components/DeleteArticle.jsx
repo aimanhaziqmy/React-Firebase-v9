@@ -17,7 +17,6 @@ export default function DeleteArticle({ id, imageUrl }) {
       }
     }
   };
-  const handleCancel = () => {};
   return (
     <div>
       <i
