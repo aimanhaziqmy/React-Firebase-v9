@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { storage, db, auth } from "./../firebaseConfig";
+import { storage, db, auth } from "../firebaseConfig";
 import { toast } from "react-toastify";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
@@ -12,6 +12,8 @@ export default function AddArticle() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    dateStart : "",
+    dateEnd : "",
     image: "",
     createdAt: Timestamp.now().toDate(),
   });
@@ -27,7 +29,7 @@ export default function AddArticle() {
   };
 
   const handlePublish = () => {
-    if (!formData.title || !formData.description || !formData.image) {
+    if (!formData.title || !formData.description || !formData.image || !formData.dateStart || !formData.dateEnd) {
       alert("Please fill all the fields");
       return;
     }
@@ -54,14 +56,18 @@ export default function AddArticle() {
         setFormData({
           title: "",
           description: "",
+          dateStart : "",
+          dateEnd : "",
           image: "",
         });
 
         getDownloadURL(uploadImage.snapshot.ref).then((url) => {
-          const articleRef = collection(db, "Articles");
+          const articleRef = collection(db, "Events");
           addDoc(articleRef, {
             title: formData.title,
             description: formData.description,
+            dateStart : formData.dateStart,
+            dateEnd : formData.dateEnd,
             imageUrl: url,
             createdAt: Timestamp.now().toDate(),
             createdBy: user.displayName,
@@ -82,16 +88,16 @@ export default function AddArticle() {
   };
 
   return (
-    <div className="border p-3 mt-3 bg-light" style={{ position: "fixed" }}>
+    <div className="border card p-3 mt-3" style={{ position: "fixed" }}>
       {!user ? (
         <>
-          <Link to="/login">Login to create article</Link>
+          <Link to="/login">Login to create Events</Link>
           <br />
           Don't have an account ? <Link to="/register">Register</Link>
         </>
       ) : (
         <>
-          <h2>Create article</h2>
+          <h2 className="text-center">Create an Events</h2>
           <div className="form-group">
             <label htmlFor="">Title</label>
             <input
@@ -111,6 +117,14 @@ export default function AddArticle() {
             value={formData.description}
             onChange={(e) => handleChange(e)}
           />
+
+
+          {/* Start Date */}
+          <label htmlFor="">Date Start</label>
+          <input type="date" name="dateStart" className="form-control" value={formData.dateStart} onChange={(e) => handleChange(e)}/>
+
+          <label htmlFor="">Date End</label>
+          <input type="date" name="dateEnd" className="form-control" value={formData.dateEnd} onChange={(e) => handleChange(e)}/>
 
           {/* image */}
           <label htmlFor="">Image</label>

@@ -23,7 +23,7 @@ export default function Articles() {
   return (
     <div>
       {articles.length === 0 ? (
-        <p>No article found</p>
+        <p>No events found</p>
       ) : (
         articles.map((article) => (
           <div key={article.id} className="border mt-3 p-3 bg-light">

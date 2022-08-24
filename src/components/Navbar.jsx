@@ -3,30 +3,37 @@ import { Link } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import ImanMediaImg from '../images/imanmedianav.png'
 const Navbar = () => {
   const [user] = useAuthState(auth);
   return (
     <div
-      className="fixed-top border pt-3 pb-3"
-      style={{ backgroundColor: "whitesmoke" }}
+      className="fixed-top"
     >
-      <nav className="navbar">
-        <div>
+      <nav className="navbar navbar-light bg-light">
+      <div className="row container-fluid">
+        <div className="col-auto">
           <img
-            src="https://picsum.photos/300/300"
-            width={30}
-            height={30}
+            src={ImanMediaImg}
+            height={50}
             alt="logo"
-            className="ms-5"
+            className="ms-2"
           />
-        </div>
-        <Link className="nav-link" to="/">
+      </div>
+      <div className="col-auto">
+          <Link className="nav-link" to="/">
           Home
         </Link>
-        <Link className="nav-link" to="/register">
+        </div>
+        <div className="col-auto">
+         
+          <Link className="nav-link" to="/register">
           Register
         </Link>
-
+        </div>
+        </div>
+        
+       
         {user && (
           <>
             <span className="pe-4">Signed in as {user.displayName}</span>

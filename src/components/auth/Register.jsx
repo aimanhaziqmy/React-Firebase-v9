@@ -8,8 +8,8 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  let navigate = useNavigate();
 
+  let navigate = useNavigate();
   const handleSignup = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
