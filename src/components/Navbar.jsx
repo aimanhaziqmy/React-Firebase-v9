@@ -11,7 +11,7 @@ const Navbar = () => {
       className="fixed-top"
     >
       <nav className="navbar navbar-light bg-light">
-        <div className="row container-fluid">
+        <div className=" container-fluid">
           <div className="col-auto">
             <img
               src={ImanMediaImg}
@@ -20,32 +20,42 @@ const Navbar = () => {
               className="ms-2"
             />
           </div>
-          <div className="col-auto">
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-          </div>
-          <div className="col-auto">
-
-            <Link className="nav-link" to="/register">
-              Register
-            </Link>
-          </div>
-          <div className="col-auto">
-          {user && (
-          <>
-            <span className="pe-4">Signed in as {user.displayName}</span>
-            <button
-              className="btn btn-primary btn-sm me-3"
-              onClick={() => {
-                signOut(auth);
-              }}
-            >
-              Logout
-            </button>
-          </>
-        )}
+          <div className="row d-flex align-items-center m-2">
+            <div className="col-auto">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
             </div>
+
+
+            {user && (
+              <>
+                <div className="col-auto">
+                  <Link className="nav-link" to="/register">
+                    Add Admin
+                  </Link>
+                </div>
+                <div className="col-auto">
+                  <Link className="nav-link" to="/allevents">All Events</Link>
+                </div>
+                <div className="col-auto">
+                  <Link className="nav-link" to="/users">Staff</Link>
+                </div>
+                <div className="col-auto">
+                  <span className="pe-4">Signed in as {user.displayName}</span>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={() => {
+                      signOut(auth);
+                    }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              </>
+            )}
+
+          </div>
         </div>
       </nav>
     </div>

@@ -6,15 +6,13 @@ import {
     updateDoc,
   } from "firebase/firestore";
   import React, { useEffect, useState } from "react";
-  import { db } from "../firebaseConfig";
+  import { db } from "../../firebaseConfig";
   import { useAuthState } from "react-firebase-hooks/auth";
   import { v4 as uuidv4 } from "uuid";
-  import { auth } from "../firebaseConfig";
   
-  export default function Clockin({ id }) {
+  export default function Clockin({ id }) {1
     const [clockIn, setClockIn] = useState("");
     const [clockIns, setClockIns] = useState([]);
-    const [currentlyLoggedinUser] = useAuthState(auth);
     const clockInRef = doc(db, "Events", id);
     useEffect(() => {
       const docRef = doc(db, "Events", id);
@@ -27,9 +25,11 @@ import {
       if (e.key === "Enter") {
         updateDoc(clockInRef, {
           clockIns: arrayUnion({
-            user: currentlyLoggedinUser.uid,
-            userName: currentlyLoggedinUser.displayName,
+            staff: staffName,
+            date : workDate,
             clockIn: clockIn,
+            clockOut: clockOut,
+            salary : salary,
             createdAt: new Date(),
             clockInId: uuidv4(),
           }),

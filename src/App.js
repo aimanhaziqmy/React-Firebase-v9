@@ -8,22 +8,15 @@ import Login from "./components/auth/Login";
 import Events from "./components/Event/Events";
 import Users from "./components/User/Users";
 import AddUser from "./components/User/AddUser";
+import Admins from "./components/auth/Admins";
+
 function App() {
   return (
     <div className="container">
       <Router>
         <Routes>
-          <Route path="/register" element={<Register />} />
+
           <Route path="/login" element={<Login />} />
-          <Route path="/article/:id" element={<Article />} />
-          <Route path="/users" element={ <div className="row" style={{ marginTop: 100 }}>
-                <div className="col-md-8">
-                  <Users />
-                </div>
-                <div className="col-md-4">
-                  <AddUser />
-                </div>
-              </div>}/>
           <Route
             path="/"
             element={
@@ -37,6 +30,28 @@ function App() {
               </div>
             }
           />
+
+        
+          <Route path="/register" element={
+            <div className="row" style={{ marginTop: 100 }}>
+              <div className="col-md-8">
+                <Admins />
+              </div>
+              <div className="col-md-4">
+                <Register />
+              </div>
+            </div>
+          } />
+          <Route path="/article/:id" element={<Article />} />
+          <Route path="/users" element={<div className="row" style={{ marginTop: 100 }}>
+            <div className="col-md-8">
+              <Users />
+            </div>
+            <div className="col-md-4">
+              <AddUser />
+            </div>
+          </div>} />
+
         </Routes>
         <Navbar />
       </Router>

@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db, auth } from "../../firebaseConfig";
-import DeleteArticle from "../DeleteArticle";
 import { useAuthState } from "react-firebase-hooks/auth";
-import LikeArticle from "../LikeArticle";
-import { Link } from "react-router-dom";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
@@ -55,8 +52,6 @@ export default function Events() {
      
           </div>
         </div>
-
-     
         ))
       )}
     </div>

@@ -40,7 +40,7 @@ export default function AddUser(){
 
   return (
     <div className="border card p-3 mt-3" style={{position :"fixed"}}>
-      <h2 className="text-center">Add User</h2>
+      <h2 className="text-center">Add Staff</h2>
       <div className="form-group">
         <label htmlFor="">Name</label>
         <input type="text" name="name" className="form-control" value={formData.name} onChange={(e) => handleChange(e)}/>

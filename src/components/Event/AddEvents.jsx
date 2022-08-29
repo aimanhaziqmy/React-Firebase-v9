@@ -73,7 +73,7 @@ export default function AddEvents() {
             createdBy: user.displayName,
             userId: user.uid,
             likes: [],
-            comments: [],
+            clockIns: [],
           })
             .then(() => {
               toast("Article added successfully", { type: "success" });
@@ -91,9 +91,7 @@ export default function AddEvents() {
     <div className="border card p-3 mt-3" style={{ position: "fixed" }}>
       {!user ? (
         <>
-          <Link to="/login">Login to create Events</Link>
-          <br />
-          Don't have an account ? <Link to="/register">Register</Link>
+          <Link to="/login">Login to CRM</Link>
         </>
       ) : (
         <>

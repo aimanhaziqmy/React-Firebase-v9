@@ -26,11 +26,6 @@ export default function Users() {
       {users.length === 0 ? (
         <div>
           <p className="mt-5">No users found</p>
-          <p className="mt-5">No users found</p>
-          <p className="mt-5">No users found</p>
-          <p className="mt-5">No users found</p>
-          <p className="mt-5">No users found</p>
-          <p className="mt-5">No users found</p>
         </div>
       ) : (
         <div>
@@ -47,7 +42,7 @@ export default function Users() {
             </thead>
             <tbody>
             {users.map((user,i) => (
-                <tr>
+                <tr key={user.id}>
                   <th scope="row">{i+1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
