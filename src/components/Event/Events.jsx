@@ -14,9 +14,22 @@ export default function Events() {
         id: doc.id,
         ...doc.data(),
       }));
-      setEvents(events);
+      filterAll(events);
     });
-  });
+  },[]);
+  
+  function filterAll(data){
+    var filteredData = []
+    for(var count = 0; count < data.length; count++){
+      var eventEndDate = new Date(data[count].dateEnd);
+      var datenow = new Date()
+      if(eventEndDate > datenow){
+        filteredData.push(data[count])
+      }
+      }
+      return setEvents(filteredData)
+    }
+   
   
   return (
     <div>
