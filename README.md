@@ -1,4 +1,4 @@
-# React Firebase V9 Starter
+# React Firebase V9 Blog Starter
 
 This package comes fully equipped with Blog CRUD operations and Firebase authentication, including user registration and login functionality. It's all set up and ready to use right out of the box.
 
